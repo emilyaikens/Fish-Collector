@@ -12,6 +12,10 @@
         <p>Quantity: {{ fish.quantity }}</p>
       {% endif %}
     </div>
+    <div class="card-action">
+        <a href="{% url 'fish_update' fish.id %}">Edit</a>
+        <a href="{% url 'fish_delete' fish.id %}">Delete</a>
+      </div>
   </div>
 
 {% endblock %}
