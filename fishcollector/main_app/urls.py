@@ -8,4 +8,6 @@ urlpatterns = [
     path('about-us/', views.about_us, name='about_us'),
     #http://localhost:8000/fish
     path('fish/', views.fish_index, name='index'),
+    #http://localhost:8000/fish/1
+    path('fish/<int:fish_id>/', views.fish_detail, name='detail')
 ]
