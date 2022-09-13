@@ -10,4 +10,4 @@ class Fish(models.Model):
 
 #allows us to see the cat name in the admin, rather than CatObject1
     def __str__(self):
-        return self.name
+        return self.commonName
