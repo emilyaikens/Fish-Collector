@@ -9,3 +9,7 @@ def home(request):
 
 def about_us(request):
     return render(request, 'about.html')
+
+def fish_index(request):
+    fish = Fish.objects.all()
+    return render(request, 'fish/index.html', {'fish':fish})

@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1> Cat List</h1>
+<h1> Fish List</h1>
 
-{% for cat in cats %}
-<a href="{% url 'detail' fish.id %}">
+{% for fish in fish %}
+
   <div class="card">
     <div class="card-content">
       <span class="card-title">{{ fish.name }}</span>
-      <p>Breed: {{ fish.breed }}</p>
-      <p>Description: {{ cat.description }}</p>
-      {% if cat.age > 0 %}
-        <p>Age: {{ cat.age }}</p>
-      {% else %}
-        <p>Age: Kitten</p>
+      <p>Common Name: {{ fish.commonName }}</p>
+      <p>Description: {{ fish.sciName }}</p>
+      <p>Habitat: {{ fish.habitat }}</p>
+      {% if fish.quantity > 0 %}
+        <p>Quantity: {{ fish.quantity }}</p>
       {% endif %}
     </div>
   </div>
