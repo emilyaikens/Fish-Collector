@@ -34,11 +34,11 @@
             <tr><th>Date</th><th>Age</th></tr>
           </thead>
           <tbody>
-            {% for survey in fish.survey_set.all %}
+            {% for survey in fish.surveys_set.all %}
               <tr>
                 <td>{{survey.date}}</td>
                 <td>{{survey.get_age_display}}</td>
-              </tr>
+              </tr>>
             {% endfor %}
           </tbody>
         </table>
@@ -52,7 +52,7 @@
       setDefaultDate: true,
       autoClose: true
     });
-    const selectEl = document.getElementById('id_survey');
+    const selectEl = document.getElementById('id_age');
       M.FormSelect.init(selectEl);
   </script>
 {% endblock %}
