@@ -20,10 +20,22 @@ def fish_index(request):
 
 def fish_detail(request, fish_id):
     fish = Fish.objects.get(id=fish_id)
-    return render(request, 'fish/detail.html', {'fish':fish})
+    survey_form = SurveyForm()
+    return render(
+        request, 
+        'fish/detail.html', 
+        {'fish':fish , 'survey_form':survey_form}
+    )
 
 def add_survey(request, fish_id):
-    return HttpResponse(f'add survey for {fish_id}')
+    #print(request.POST['date']) <-- this allows us to see what's been entered into the form. the request.
+    #print(request.POST['csrfmiddlewaretoken'])
+    form = SurveyForm(request.POST)
+    if form.is_valid():
+        new_survey = form.save(commit=False) #commit=False because we need to assign a cat id
+        new_survey.fish_id = fish_id # cat_id coming from url
+        new_survey.save()    
+    return redirect('detail', fish_id=fish_id)
 
 
 class FishCreate(CreateView):
