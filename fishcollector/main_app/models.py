@@ -17,7 +17,7 @@ class Collector(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('collectors_detail', kwargs={'pk': self-id})
+        return reverse('collectors_detail', kwargs={'pk': self.id})
 
 class Fish(models.Model):
     commonName = models.CharField(max_length=100)

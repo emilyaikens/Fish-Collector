@@ -16,7 +16,7 @@ urlpatterns = [
     path('fish/<int:fish_id>/add_survey/', views.add_survey, name="add_survey"),
 
 
-    path('fish/<int:fish_id>/assoc_collector/<int:collector>/', views.assoc_collector, name='assoc_collector'),
+    path('fish/<int:fish_id>/assoc_collector/<int:collector_id>/', views.assoc_collector, name='assoc_collector'),
     # http://localhost:8000/collectors/
     path('collectors/', views.CollectorList.as_view(), name='collectors_index'),
     # http://localhost:8000/collectors/1/

@@ -20,11 +20,12 @@ def fish_index(request):
 
 def fish_detail(request, fish_id):
     fish = Fish.objects.get(id=fish_id)
+    collectors_fish_doesnt_have = Collector.objects.exclude(id__in = fish.collectors.all().values_list('id'))
     survey_form = SurveyForm()
     return render(
         request, 
         'fish/detail.html', 
-        {'fish':fish , 'survey_form':survey_form}
+        {'fish':fish , 'survey_form':survey_form, 'collectors': collectors_fish_doesnt_have}
     )
 
 def add_survey(request, fish_id):
@@ -40,7 +41,7 @@ def add_survey(request, fish_id):
 
 class FishCreate(CreateView):
     model = Fish
-    fields = '__all__'
+    fields = ['commonName', 'sciName', 'habitat', 'quantity']
     # fields = ['age', 'description'] - use this if you want to specify what the form asks for
 
     def get_success_url(self, **kwargs):
