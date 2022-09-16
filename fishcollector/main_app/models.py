@@ -8,6 +8,16 @@ AGE = (
     ('A', 'Adult')
 )
 
+class Collector(models.Model):
+    name = models.CharField(max_length=50)
+    vessel = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('collectors_detail', kwargs={'pk': self-id})
+
 class Fish(models.Model):
     commonName = models.CharField(max_length=100)
     sciName = models.CharField(max_length=100)

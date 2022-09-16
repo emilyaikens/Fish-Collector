@@ -1,15 +1,16 @@
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Fish
+from .models import Fish, Collector
 from .forms import SurveyForm
 
 # Create your views here.
 
 def home(request):
-    return HttpResponse("<h1>Home Page</h1>")
+    return render(request, 'home.html')
 
 def about_us(request):
     return render(request, 'about.html')
@@ -56,3 +57,36 @@ class FishUpdate(UpdateView):
 class FishDelete(DeleteView):
     model = Fish
     success_url = '/fish/'
+
+# http://localhost:8000/collectors/
+class CollectorList(ListView):
+    model = Collector
+
+
+# http://localhost:8000/collectors/1/
+class CollectorDetail(DetailView):
+    model = Collector
+
+
+# http://localhost:8000/collectors/create/
+class CollectorCreate(CreateView):
+    model = Collector
+    fields = '__all__'
+
+
+# http://localhost:8000/toys/1/update/
+class CollectorUpdate(UpdateView):
+    model = Collector
+    fields = ['name', 'vessel']
+
+
+# http://localhost:8000/toys/1/delete/
+class CollectorDelete(DeleteView):
+    model = Collector
+    success_url = '/collectors/'
+
+def assoc_collector(Request, fish_id, collector_id):
+    Fish.objects.get(id=fish_id).collectors.add(collector_id)
+    return redirect('detail', fish_id=fish_id)
+        # redirect to detail refers to the url path named 'detail'
+        # rdirect needs two params: the url and the ID, if there is one to pass
