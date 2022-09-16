@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 #used for dropdown menu
 AGE = (
@@ -23,6 +24,8 @@ class Fish(models.Model):
     sciName = models.CharField(max_length=100)
     habitat = models.TextField(max_length=250)
     quantity = models.IntegerField()
+
+    collectors = models.ManyToManyField(Collector)
 
 #allows us to see the cat name in the admin, rather than CatObject1
     def __str__(self):
