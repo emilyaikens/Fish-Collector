@@ -1,1 +1,1 @@
-web: funicorn fishcollector.wsgi
+web: gunicorn fishcollector.wsgi
