@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import django_on_heroku
 import os
+import locale
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,16 +29,15 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': config(
         'DATABASES',
-        default='sqlite:///' + BASE_DIR.child('db.sqlite3'),
+        # default='sqlite:///' + BASE_DIR.child('db.sqlite3'),
         #cast=?
     )
 }
 
 ####
+config.encoding = locale.getpreferredencoding(False)
 SECURITY_KEY = config('SECRET_KEY')
 
-EMAIL_HOST = config('EMAIL_HOST', default='localhost')
-EMAIL_PORT = config('EMAIL_PORT', default=25, cast=int)
 
 ALLOWED_HOSTS = []
 
