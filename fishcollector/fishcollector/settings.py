@@ -21,11 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-####
-SECURITY_KEY = config('SECRET_KEY')
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
+TEMPLATE_DEBUG = DEBUG
+
+DATABASES = {
+    'default': config(
+        'DATABASES',
+        default='sqlite:///' + BASE_DIR.child('db.sqlite3'),
+        #cast=?
+    )
+}
+
+####
+SECURITY_KEY = config('SECRET_KEY')
 
 EMAIL_HOST = config('EMAIL_HOST', default='localhost')
 EMAIL_PORT = config('EMAIL_PORT', default=25, cast=int)
