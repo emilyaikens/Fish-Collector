@@ -31,6 +31,18 @@ A full stack-app used to keep track of biological survey collections. Created to
 
 * Dealing with the database migrations is a bit of a hassel in Django/Postgres. It is inconvenient to restructure the models and data once they have been created and migrated. 
 
+## App Screenshots
+
+Fish Details
+![Fish Details](fishcollector/Images/fish-detail.png)
+
+Add a fish
+![Add a Fish](fishcollector/Images/add-a-fish.png)
+
+View all fish
+![View all fish](fishcollector/Images/view-all-fish.png)
+
+
 ## Icebox
 
 * Make this app more functional. I built it more for the practice than anything else. I would like to revisit the models and create a site that could actually be used to log biological surveys or collections. This would involve restructuring some of the relationships as well.
