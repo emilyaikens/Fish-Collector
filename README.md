@@ -11,8 +11,6 @@ A full stack-app used to keep track of biological survey collections. Created to
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-
 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
@@ -35,4 +33,6 @@ A full stack-app used to keep track of biological survey collections. Created to
 
 ## Icebox
 
-* Make this app more functional. I built it more for the practice than anything else. I would like to revisit the models and create a site that could actually be used to log biological surveys or collections. This would involve restructuring some of the relationships as well. 
+* Make this app more functional. I built it more for the practice than anything else. I would like to revisit the models and create a site that could actually be used to log biological surveys or collections. This would involve restructuring some of the relationships as well.
+
+* Create CSS for this page. Right now it is styled with a Materialize (Material Design by Google).

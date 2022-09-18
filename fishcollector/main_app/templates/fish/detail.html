@@ -15,8 +15,8 @@
             {% endif %}
             </div>
             <div class="card-action">
-                <a href="{% url 'fish_update' fish.id %}">Edit</a>
-                <a href="{% url 'fish_delete' fish.id %}">Delete</a>
+                <a class = "deep-orange-text text-darken-4" href="{% url 'fish_update' fish.id %}">Edit</a>
+                <a class = "deep-orange-text text-darken-4" href="{% url 'fish_delete' fish.id %}">Delete</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <form action = "{% url 'add_survey' fish.id %}" method="POST">
           {% csrf_token %}
           {{ survey_form.as_p }}
-          <input type="submit" class="btn" value="Add Survey">
+          <input type="submit" class="btn cyan darken-4" value="Add Survey">
         </form>
     
         <table class="striped">
@@ -76,7 +76,7 @@
               <div class="card-action">
                 <form action="{% url 'assoc_collector' fish.id collector.id %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" class="btn">Add</button>
+                    <button type="submit" class="btn cyan darken-4">Add</button>
                 </form>
               </div>
             </div>
