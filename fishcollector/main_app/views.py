@@ -4,9 +4,7 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from .models import Fish, Collector
 from .forms import SurveyForm
-from django.http import HttpResponse
-
-# Create your views here.
+# from django.http import HttpResponse
 
 def home(request):
     return render(request, 'home.html')
@@ -30,7 +28,6 @@ def fish_detail(request, fish_id):
 
 def add_survey(request, fish_id):
     #print(request.POST['date']) <-- this allows us to see what's been entered into the form. the request.
-    #print(request.POST['csrfmiddlewaretoken'])
     form = SurveyForm(request.POST)
     if form.is_valid():
         new_survey = form.save(commit=False) #commit=False because we need to assign a cat id
@@ -58,29 +55,20 @@ class FishDelete(DeleteView):
     model = Fish
     success_url = '/fish/'
 
-# http://localhost:8000/collectors/
 class CollectorList(ListView):
     model = Collector
 
-
-# http://localhost:8000/collectors/1/
 class CollectorDetail(DetailView):
     model = Collector
 
-
-# http://localhost:8000/collectors/create/
 class CollectorCreate(CreateView):
     model = Collector
     fields = '__all__'
 
-
-# http://localhost:8000/toys/1/update/
 class CollectorUpdate(UpdateView):
     model = Collector
     fields = ['name', 'vessel']
 
-
-# http://localhost:8000/toys/1/delete/
 class CollectorDelete(DeleteView):
     model = Collector
     success_url = '/collectors/'

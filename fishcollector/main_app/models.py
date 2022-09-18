@@ -27,7 +27,7 @@ class Fish(models.Model):
 
     collectors = models.ManyToManyField(Collector)
 
-#allows us to see the cat name in the admin, rather than CatObject1
+#allows us to see the fish name, rather than fish object
     def __str__(self):
         return self.commonName
 

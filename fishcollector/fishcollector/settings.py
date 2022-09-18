@@ -19,20 +19,12 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 TEMPLATE_DEBUG = DEBUG
 
-DATABASES = {
-    'default': config(
-        'DATABASES',
-        # default='sqlite:///' + BASE_DIR.child('db.sqlite3'),
-        #cast=?
-    )
-}
+DATABASES = config('DATABASES')
 
 ####
 config.encoding = locale.getpreferredencoding(False)
@@ -40,7 +32,6 @@ SECURITY_KEY = config('SECRET_KEY')
 
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -83,10 +74,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'fishcollector.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
 # Password validation
