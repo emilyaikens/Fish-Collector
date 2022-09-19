@@ -12,23 +12,30 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import django_on_heroku
-import os
-import locale
-from decouple import config
+
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-DATABASES = config('DATABASES')
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('NAME'),
+        'USER' : env('USER'),
+        'PASSWORD' : env('PASSWORD'),
+        'HOST': env('localhost'),
+        'PORT': env('PORT')
+    }
+}
 
-####
-config.encoding = locale.getpreferredencoding(False)
-SECURITY_KEY = config('SECRET_KEY')
+SECURITY_KEY = env('SECRET_KEY')
 
 
 ALLOWED_HOSTS = []
